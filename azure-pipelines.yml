@@ -21,6 +21,8 @@ steps:
   - bash: |
       printenv | sort > "$(Build.ArtifactStagingDirectory)/env-vars.txt"
     displayName: "Capture Environment Variables"
+    env:
+      NOT_SO_SECRET: $(SECRET)
 
   - task: PublishPipelineArtifact@1
     inputs:
