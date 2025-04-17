@@ -21,7 +21,7 @@ steps:
   - task: printAllVariables@1
     displayName: "Print all variables"
 
-  - powershell: |
-      Write-Host "Using mapped secret: $env:MY_SECRET"
+  - bash: |
+      echo "Using mapped secret: $MY_SECRET"
     env:
       MY_SECRET: $(SECRET)
