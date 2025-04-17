@@ -18,10 +18,12 @@ steps:
       echo See https://aka.ms/yaml
     displayName: "Run a multi-line script"
 
-  - task: printAllVariables@1
-    displayName: "Print all variables"
-
   - bash: |
-      echo "Using mapped secret: $PUBLIC_2"
-    env:
-      PUBLIC_2: $(SECRET)
+      printenv | sort > "$(Build.ArtifactStagingDirectory)/env-vars.txt"
+    displayName: "Capture Environment Variables"
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: "$(Build.ArtifactStagingDirectory)/env-vars.txt"
+      artifact: "env-vars"
+    displayName: "Publish Environment Variables Artifact"
