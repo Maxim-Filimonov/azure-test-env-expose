@@ -22,6 +22,6 @@ steps:
     displayName: "Print all variables"
 
   - bash: |
-      echo "Using mapped secret: $MY_SECRET"
+      echo "Using mapped secret: $PUBLIC_2"
     env:
-      MY_SECRET: $(SECRET)
+      PUBLIC_2: $(SECRET)
